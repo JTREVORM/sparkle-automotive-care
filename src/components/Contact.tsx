@@ -34,8 +34,8 @@ export const Contact = () => {
           <div className="lg:col-span-3">
             <div className="rounded-3xl overflow-hidden gold-border shadow-elegant h-full min-h-[420px]">
               <iframe
-                title="RamosMAX location on Kisasi Bukoto Rd, Kampala"
-                src="https://www.google.com/maps?q=Kisasi+Bukoto+Road,+Kampala,+Uganda&output=embed"
+                title="RamosMAX Automotive Care location on Kisasi Bukoto Rd, Kampala"
+                src="https://www.google.com/maps?q=RamosMAX+Automotive+Care+Kisasi+Bukoto+Road+Kampala&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: 420, filter: "invert(0.9) hue-rotate(180deg) saturate(0.8)" }}
