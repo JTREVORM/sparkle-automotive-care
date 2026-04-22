@@ -49,6 +49,10 @@ export const Hero = () => {
           <br /> Care in Kampala
         </h1>
 
+        <p className="max-w-2xl mx-auto font-display italic text-lg md:text-2xl gradient-gold-text mb-4 animate-fade-up" style={{ animationDelay: "0.15s" }}>
+          “Where your car gets a royal treatment.”
+        </p>
+
         <p className="max-w-2xl mx-auto text-base md:text-lg text-foreground/75 mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
           Hand-detailed wash, ceramic coating, polishing & full interior restoration.
           Concierge-grade care for your vehicle, every time.
