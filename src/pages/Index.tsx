@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { ServicesSection } from "@/components/ServicesSection";
@@ -8,27 +8,10 @@ import { Gallery } from "@/components/Gallery";
 import { Contact } from "@/components/Contact";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
 import { Footer } from "@/components/Footer";
-import { CarSize, SERVICES } from "@/data/services";
+import { CarSize } from "@/data/services";
 
 const Index = () => {
   const [carSize, setCarSize] = useState<CarSize>("small");
-  const [selected, setSelected] = useState<Set<string>>(new Set());
-
-  const toggle = (id: string) =>
-    setSelected((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
-
-  const total = useMemo(
-    () =>
-      SERVICES.filter((s) => selected.has(s.id)).reduce(
-        (sum, s) => sum + (carSize === "small" ? s.small : s.big),
-        0
-      ),
-    [selected, carSize]
-  );
 
   useEffect(() => {
     document.title = "RamosMAX Automotive Care | Premium Car Wash & Detailing Kampala";
@@ -40,7 +23,7 @@ const Index = () => {
     })();
     meta.setAttribute(
       "content",
-      "Premium car wash, ceramic coating, polishing & full detailing in Kampala. Book via WhatsApp. Open daily 8 AM – 10 PM at Kisasi Bukoto Rd."
+      "Premium car wash, ceramic coating, polishing & full detailing in Kampala. Where your car gets a royal treatment. Book via WhatsApp. Open daily 8 AM – 10 PM at Kisasi Bukoto Rd."
     );
   }, []);
 
@@ -49,19 +32,8 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
-        <ServicesSection
-          carSize={carSize}
-          setCarSize={setCarSize}
-          selected={selected}
-          toggle={toggle}
-          total={total}
-        />
-        <BookingSection
-          carSize={carSize}
-          setCarSize={setCarSize}
-          selected={selected}
-          total={total}
-        />
+        <ServicesSection carSize={carSize} setCarSize={setCarSize} />
+        <BookingSection carSize={carSize} setCarSize={setCarSize} />
         <About />
         <Gallery />
         <Contact />

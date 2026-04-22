@@ -1,35 +1,55 @@
 import { useMemo, useState } from "react";
-import { Calendar, Clock, User, Phone, MessageCircle } from "lucide-react";
+import { Calendar, Clock, User, Phone, MessageCircle, Sparkles, X, Plus } from "lucide-react";
 import { CarSize, SERVICES, WHATSAPP_NUMBER, formatUGX } from "@/data/services";
 import { toast } from "sonner";
 
 interface Props {
   carSize: CarSize;
   setCarSize: (s: CarSize) => void;
-  selected: Set<string>;
-  total: number;
 }
 
-export const BookingSection = ({ carSize, setCarSize, selected, total }: Props) => {
+export const BookingSection = ({ carSize, setCarSize }: Props) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [picker, setPicker] = useState<string>("");
+  const [selected, setSelected] = useState<string[]>([]);
 
   const selectedServices = useMemo(
-    () => SERVICES.filter((s) => selected.has(s.id)),
+    () => selected.map((id) => SERVICES.find((s) => s.id === id)!).filter(Boolean),
     [selected]
+  );
+
+  const total = useMemo(
+    () =>
+      selectedServices.reduce(
+        (sum, s) => sum + (carSize === "small" ? s.small : s.big),
+        0
+      ),
+    [selectedServices, carSize]
   );
 
   const today = new Date().toISOString().split("T")[0];
 
+  const addService = () => {
+    if (!picker) return;
+    if (selected.includes(picker)) {
+      toast.info("That service is already added.");
+      return;
+    }
+    setSelected((prev) => [...prev, picker]);
+    setPicker("");
+  };
+
+  const removeService = (id: string) =>
+    setSelected((prev) => prev.filter((s) => s !== id));
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (selected.size === 0) {
-      toast.error("Please select at least one service from the Services section.");
-      const el = document.getElementById("services");
-      el?.scrollIntoView({ behavior: "smooth" });
+    if (selected.length === 0) {
+      toast.error("Please pick at least one service from the dropdown.");
       return;
     }
     if (!name.trim() || !phone.trim() || !date || !time) {
@@ -56,6 +76,8 @@ export const BookingSection = ({ carSize, setCarSize, selected, total }: Props) 
     toast.success("Opening WhatsApp to confirm your booking…");
   };
 
+  const availableServices = SERVICES.filter((s) => !selected.includes(s.id));
+
   return (
     <section id="booking" className="relative py-24 md:py-32 bg-surface/30">
       <div className="container max-w-5xl">
@@ -65,7 +87,7 @@ export const BookingSection = ({ carSize, setCarSize, selected, total }: Props) 
             Reserve via <span className="gradient-gold-text italic">WhatsApp</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Fill the form — we'll send your request straight to WhatsApp for instant confirmation.
+            Pick your service, fill the form — we'll send your request straight to WhatsApp for instant confirmation.
           </p>
         </div>
 
@@ -73,6 +95,39 @@ export const BookingSection = ({ carSize, setCarSize, selected, total }: Props) 
           onSubmit={handleSubmit}
           className="bg-gradient-card gold-border rounded-3xl p-6 md:p-10 shadow-elegant"
         >
+          {/* Service picker (dropdown) */}
+          <div className="mb-6">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-muted-foreground mb-2">
+              <Sparkles className="h-4 w-4" /> Pick a Service
+            </div>
+            <div className="flex flex-col sm:flex-row gap-2">
+              <select
+                value={picker}
+                onChange={(e) => setPicker(e.target.value)}
+                className="form-input flex-1"
+                aria-label="Select a service"
+              >
+                <option value="">— Choose a service —</option>
+                {availableServices.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name} · UGX {formatUGX(carSize === "small" ? s.small : s.big)}
+                  </option>
+                ))}
+              </select>
+              <button
+                type="button"
+                onClick={addService}
+                disabled={!picker}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-gold text-gold-foreground font-semibold shadow-gold disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] transition-bounce"
+              >
+                <Plus className="h-4 w-4" /> Add
+              </button>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              You can add more than one service. Prices update with your car size.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-5">
             <Field label="Full Name" icon={<User className="h-4 w-4" />}>
               <input
@@ -153,23 +208,28 @@ export const BookingSection = ({ carSize, setCarSize, selected, total }: Props) 
           {/* Selected services preview */}
           <div className="mt-6">
             <div className="text-xs uppercase tracking-wider text-muted-foreground mb-3">
-              Selected Services ({selected.size})
+              Selected Services ({selected.length})
             </div>
             {selectedServices.length === 0 ? (
-              <a
-                href="#services"
-                className="block text-center py-4 px-4 rounded-xl border border-dashed border-gold/40 text-muted-foreground hover:text-gold hover:border-gold transition-smooth text-sm"
-              >
-                No services selected — tap to choose services →
-              </a>
+              <div className="block text-center py-4 px-4 rounded-xl border border-dashed border-gold/40 text-muted-foreground text-sm">
+                No services added yet — use the dropdown above to add a service.
+              </div>
             ) : (
               <div className="flex flex-wrap gap-2">
                 {selectedServices.map((s) => (
                   <span
                     key={s.id}
-                    className="px-3 py-1.5 rounded-full text-xs font-medium bg-primary/40 border border-gold/30 text-foreground"
+                    className="inline-flex items-center gap-2 pl-3 pr-1.5 py-1.5 rounded-full text-xs font-medium bg-primary/40 border border-gold/30 text-foreground"
                   >
                     {s.name} · UGX {formatUGX(carSize === "small" ? s.small : s.big)}
+                    <button
+                      type="button"
+                      onClick={() => removeService(s.id)}
+                      aria-label={`Remove ${s.name}`}
+                      className="h-5 w-5 rounded-full bg-background/40 hover:bg-destructive/80 flex items-center justify-center transition-smooth"
+                    >
+                      <X className="h-3 w-3" />
+                    </button>
                   </span>
                 ))}
               </div>
@@ -207,6 +267,7 @@ export const BookingSection = ({ carSize, setCarSize, selected, total }: Props) 
           box-shadow: 0 0 0 3px hsl(var(--gold) / 0.15);
         }
         .form-input::placeholder { color: hsl(var(--muted-foreground)); }
+        select.form-input option { background: hsl(var(--background)); color: hsl(var(--foreground)); }
       `}</style>
     </section>
   );
