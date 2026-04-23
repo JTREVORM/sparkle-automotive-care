@@ -79,7 +79,7 @@ export const BookingSection = ({ carSize, setCarSize }: Props) => {
   const availableServices = SERVICES.filter((s) => !selected.includes(s.id));
 
   return (
-    <section id="booking" className="relative py-24 md:py-32 bg-surface/30">
+    <section id="booking" className="relative py-12 md:py-16 bg-surface/30">
       <div className="container max-w-5xl">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Book Your Slot</p>
