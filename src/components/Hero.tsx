@@ -22,7 +22,17 @@ export const Hero = () => {
       <div className="absolute bottom-1/4 -right-10 h-96 w-96 rounded-full bg-primary-glow/20 blur-3xl animate-float" style={{ animationDelay: "1.5s" }} />
 
       <div className="relative container text-center pt-32 pb-20">
-        {/* Rating pill */}
+        {/* Logo - now first */}
+        <div className="flex justify-center mb-8 animate-fade-up">
+          <div className="relative">
+            <div className="absolute inset-0 bg-gold/30 blur-3xl rounded-full" />
+            <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden ring-4 ring-gold/60 shadow-glow bg-background">
+              <img src={logo} alt="RamosMAX logo" className="h-full w-full object-cover" />
+            </div>
+          </div>
+        </div>
+
+        {/* Rating pill - moved below logo */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass gold-border mb-8 animate-fade-in">
           <div className="flex">
             {[...Array(5)].map((_, i) => (
@@ -32,16 +42,6 @@ export const Hero = () => {
           <span className="text-xs font-medium text-foreground/90 tracking-wider">
             5.0 RATED · KAMPALA'S PREMIUM DETAILING
           </span>
-        </div>
-
-        {/* Logo */}
-        <div className="flex justify-center mb-8 animate-fade-up">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gold/30 blur-3xl rounded-full" />
-            <div className="relative h-32 w-32 md:h-40 md:w-40 rounded-full overflow-hidden ring-4 ring-gold/60 shadow-glow bg-background">
-              <img src={logo} alt="RamosMAX logo" className="h-full w-full object-cover" />
-            </div>
-          </div>
         </div>
 
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
