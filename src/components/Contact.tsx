@@ -1,11 +1,11 @@
-import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Clock, MessageCircle, Instagram, Music } from "lucide-react";
 import { WHATSAPP_NUMBER, PHONE_DISPLAY } from "@/data/services";
 
 export const Contact = () => {
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hello RamosMAX, I'd like to enquire about your services.")}`;
 
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="py-12 md:py-16">
       <div className="container">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Get In Touch</p>
@@ -45,6 +45,29 @@ export const Contact = () => {
               />
             </div>
           </div>
+        </div>
+
+        {/* Social links */}
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <span className="text-sm text-muted-foreground">Follow us:</span>
+          <a
+            href="https://www.instagram.com/ramosmaxautomotivecare?igsh=eHl4N2E3ZmJtbXVw"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full glass gold-border text-muted-foreground hover:text-gold transition-smooth"
+          >
+            <Instagram className="h-4 w-4" />
+            <span className="text-sm">Instagram</span>
+          </a>
+          <a
+            href="https://vm.tiktok.com/ZS9NFnufvKkHG-M1LIz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full glass gold-border text-muted-foreground hover:text-gold transition-smooth"
+          >
+            <Music className="h-4 w-4" />
+            <span className="text-sm">TikTok</span>
+          </a>
         </div>
       </div>
     </section>

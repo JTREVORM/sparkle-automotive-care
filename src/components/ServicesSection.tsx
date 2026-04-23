@@ -8,7 +8,7 @@ interface Props {
 
 export const ServicesSection = ({ carSize, setCarSize }: Props) => {
   return (
-    <section id="services" className="relative py-24 md:py-32 overflow-hidden">
+    <section id="services" className="relative py-12 md:py-16 overflow-hidden">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 h-px w-2/3 bg-gradient-to-r from-transparent via-gold/40 to-transparent" />
 
       <div className="container">
