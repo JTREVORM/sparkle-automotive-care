@@ -18,7 +18,7 @@ export const SERVICES: Service[] = [
     small: 20000,
     big: 30000,
     description:
-      "A standard hand wash that cleans the exterior bodywork, wheels, and tyres — leaving your car fresh and spotless.",
+      "A standard hand wash that cleans the exterior bodywork, wheels, and tyres — plus interior dry cleaning. Leaves your car fresh, spotless, and ready to roll.",
   },
   {
     id: "dry-vacuum",

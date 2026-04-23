@@ -1,5 +1,5 @@
 import logo from "@/assets/logo.jpeg";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, Music } from "lucide-react";
 import { PHONE_DISPLAY } from "@/data/services";
 
 export const Footer = () => (
