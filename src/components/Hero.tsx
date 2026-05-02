@@ -45,8 +45,8 @@ export const Hero = () => {
         </div>
 
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-[1.05] mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-          Premium <span className="gradient-gold-text italic">Automotive</span>
-          <br /> Care in Kampala
+          Car Wash & <span className="gradient-gold-text italic">Auto Detailing</span>
+          <br /> in Kampala
         </h1>
 
         <p className="max-w-2xl mx-auto font-display italic text-lg md:text-2xl gradient-gold-text mb-4 animate-fade-up" style={{ animationDelay: "0.15s" }}>
@@ -54,8 +54,8 @@ export const Hero = () => {
         </p>
 
         <p className="max-w-2xl mx-auto text-base md:text-lg text-foreground/75 mb-10 leading-relaxed animate-fade-up" style={{ animationDelay: "0.2s" }}>
-          Hand-detailed wash, ceramic coating, polishing & full interior restoration.
-          Concierge-grade care for your vehicle, every time.
+          Premium washing bay in Kampala offering T-cut polishing, ceramic coating,
+          engine cleaning and full interior detailing on Kisasi Bukoto Road.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.3s" }}>

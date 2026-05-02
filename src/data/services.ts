@@ -58,7 +58,7 @@ export const SERVICES: Service[] = [
     small: 20000,
     big: 20000,
     description:
-      "Safe degreasing and cleaning of the engine bay to remove oil, grime, and dust for a tidy, well-maintained look.",
+      "Engine cleaning in Kampala — safe degreasing of the engine bay to remove oil, grime and dust for a tidy, well-maintained look.",
   },
   {
     id: "wet-vacuum",
@@ -82,7 +82,7 @@ export const SERVICES: Service[] = [
     small: 100000,
     big: 120000,
     description:
-      "Restores faded paint by removing scratches and oxidation, then polishing to a deep, glossy showroom shine.",
+      "Professional T-cut polishing in Kampala — removes scratches and oxidation from faded paint, then buffs to a deep, glossy showroom shine.",
   },
   {
     id: "headlight",
@@ -114,7 +114,7 @@ export const SERVICES: Service[] = [
     small: 200000,
     big: 250000,
     description:
-      "Premium long-lasting protective coating that bonds to your paint, repels water, resists scratches, and keeps the car cleaner for longer.",
+      "Premium ceramic coating service in Uganda — long-lasting protective layer that bonds to your paint, repels water, resists scratches and keeps your car cleaner for longer.",
   },
 ];
 

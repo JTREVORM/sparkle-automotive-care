@@ -14,7 +14,7 @@ const Index = () => {
   const [carSize, setCarSize] = useState<CarSize>("small");
 
   useEffect(() => {
-    document.title = "RamosMAX Automotive Care | Premium Car Wash & Detailing Kampala";
+    document.title = "RamosMAX Automotive Care | Best Car Wash & Detailing in Kampala";
     const meta = document.querySelector('meta[name="description"]') ?? (() => {
       const m = document.createElement("meta");
       m.setAttribute("name", "description");
@@ -23,7 +23,7 @@ const Index = () => {
     })();
     meta.setAttribute(
       "content",
-      "Premium car wash, ceramic coating, polishing & full detailing in Kampala. Where your car gets a royal treatment. Book via WhatsApp. Open daily 8 AM – 10 PM at Kisasi Bukoto Rd."
+      "Professional car wash and auto detailing services in Kampala. Book T-cut polishing, ceramic coating, engine cleaning & more at RamosMAX Automotive Care."
     );
   }, []);
 
