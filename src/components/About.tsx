@@ -15,17 +15,19 @@ export const About = () => {
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">About Us</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Concierge-grade <br />
-              <span className="gradient-gold-text italic">car care</span> in the heart of Kampala
+              Trusted <span className="gradient-gold-text italic">car wash in Kampala</span> — auto detailing done right
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-5">
-              RamosMAX Automotive Care is a premium car wash and detailing studio on Kisasi Bukoto Road.
-              From a quick hand wash to full ceramic coating, our specialists treat every vehicle like
-              their own — combining the right products, the right technique and patient craftsmanship.
+              Located in Kisasi along Bukoto Road, RamosMAX Automotive Care is a trusted car wash
+              in Kampala offering professional auto detailing in Uganda — from express hand washes
+              to T-cut polishing and long-lasting ceramic coating. Our specialists combine premium
+              products, refined technique and patient craftsmanship to treat every vehicle like
+              their own.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Whether you drive a sedan, an SUV, or a pickup, our team delivers a finish that turns heads
-              and protects your investment.
+              Whether you drive a sedan, an SUV, or a pickup, our washing bay in Kampala delivers a
+              finish that turns heads and protects your investment — backed by transparent pricing
+              and easy WhatsApp booking.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
