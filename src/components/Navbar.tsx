@@ -32,11 +32,11 @@ export const Navbar = () => {
           <div className="h-11 w-11 rounded-full overflow-hidden ring-2 ring-gold/60 shadow-gold">
             <img src={logo} alt="RamosMAX Automotive Care logo" className="h-full w-full object-cover" />
           </div>
-          <div className="hidden sm:block leading-tight">
-            <div className="font-display text-lg text-foreground">
+          <div className="block leading-tight">
+            <div className="font-display text-base sm:text-lg text-foreground">
               Ramos<span className="gradient-gold-text">MAX</span>
             </div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
               Automotive Care
             </div>
           </div>
